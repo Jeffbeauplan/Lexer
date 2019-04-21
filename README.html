@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link href="data:text/css;charset=utf-8,%40font%2Dface%20%7B%0Afont%2Dfamily%3A%20octicons%2Dlink%3B%0Asrc%3A%20url%28data%3Afont%2Fwoff%3Bcharset%3Dutf%2D8%3Bbase64%2Cd09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM%2B8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB%2FaFGpk3jaTY6xa8JAGMW%2FO62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v%2Bk%2F0an2i%2BitHDw3v2%2B9%2BDBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3%2FI7AtxEJLtzzuZfI%2BVVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy%2FLt7Kc%2B0vWY%2FgAgIIEqAN9we0pwKXreiMasxvabDQMM4riO%2BqxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw%2Bymhce7vwM9jSqO8JyVd5RH9gyTt2%2BJ%2FyUmYlIR0s04n6%2B7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv%2FocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi%2BW2%2BMjCzMIDApSwvXzC97Z4Ig8N%2FBxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh%2F8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT%2BAEjAwuDFpBmA9KMDEwMCh9i%2Fv8H8sH0%2F4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9%2FlqYwOGZxeUelN2U2R6%2BcArgtCJpauW7UQBqnFkUsjAY%2FkOU1cP%2BDAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl%2BvvmM%2FbyA48e6tWrKArm4ZJlCbdsrxksL1AwWn%2FyBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO%2F%2FsdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd%2F89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF%2B9JOS0nbaaYDCQfwCJ7Au3AHj%2BLO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm%2BEBXuAbHmIMSRMs%2B4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL%2BhD7C1xoaHeLJSEao0FEW14ckxC%2BTU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13%2F%2Blm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl%2B9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O%2FAdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB%2F%2F%2FAA8AAQAAAAAAAAAAAAAAAAABAAAAAA%3D%3D%29%20format%28%27woff%27%29%3B%0A%7D%0Abody%20%7B%0A%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0Atext%2Dsize%2Dadjust%3A%20100%25%3B%0Acolor%3A%20%23333%3B%0Afont%2Dfamily%3A%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20freesans%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0Afont%2Dsize%3A%2016px%3B%0Aline%2Dheight%3A%201%2E6%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0Awidth%3A%20728px%3B%0Amax%2Dwidth%3A%2099%25%3B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%2030px%2030px%208rem%2030px%3B%0Amargin%2Dleft%3A%20auto%3B%0Amargin%2Dright%3A%20auto%3B%0A%7D%0Abody%20a%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0Abody%20a%3Aactive%2C%0Abody%20a%3Ahover%20%7B%0Aoutline%3A%200%3B%0A%7D%0Abody%20strong%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20h1%20%7B%0Afont%2Dsize%3A%202em%3B%0Amargin%3A%200%2E67em%200%3B%0A%7D%0Abody%20img%20%7B%0Aborder%3A%200%3B%0A%7D%0Abody%20hr%20%7B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Aheight%3A%200%3B%0A%7D%0Abody%20pre%20%7B%0Aoverflow%3A%20auto%3B%0A%7D%0Abody%20code%2C%0Abody%20kbd%2C%0Abody%20pre%20%7B%0Afont%2Dfamily%3A%20monospace%2C%20monospace%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Abody%20input%20%7B%0Acolor%3A%20inherit%3B%0Afont%3A%20inherit%3B%0Amargin%3A%200%3B%0A%7D%0Abody%20html%20input%5Bdisabled%5D%20%7B%0Acursor%3A%20default%3B%0A%7D%0Abody%20input%20%7B%0Aline%2Dheight%3A%20normal%3B%0A%7D%0Abody%20input%5Btype%3D%22checkbox%22%5D%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%200%3B%0A%7D%0Abody%20table%20%7B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Abody%20td%2C%0Abody%20th%20%7B%0Apadding%3A%200%3B%0A%7D%0Abody%20%2A%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0A%7D%0Abody%20input%20%7B%0Afont%3A%2013px%20%2F%201%2E4%20Helvetica%2C%20arial%2C%20nimbussansl%2C%20liberationsans%2C%20freesans%2C%20clean%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0A%7D%0Abody%20a%20%7B%0Acolor%3A%20%234078c0%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Abody%20a%3Ahover%2C%0Abody%20a%3Aactive%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0Abody%20hr%20%7B%0Aheight%3A%200%3B%0Amargin%3A%2015px%200%3B%0Aoverflow%3A%20hidden%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23ddd%3B%0A%7D%0Abody%20hr%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Abody%20hr%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Abody%20h1%2C%0Abody%20h2%2C%0Abody%20h3%2C%0Abody%20h4%2C%0Abody%20h5%2C%0Abody%20h6%20%7B%0Amargin%2Dtop%3A%2015px%3B%0Amargin%2Dbottom%3A%2015px%3B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Abody%20h1%20%7B%0Afont%2Dsize%3A%2030px%3B%0A%7D%0Abody%20h2%20%7B%0Afont%2Dsize%3A%2021px%3B%0A%7D%0Abody%20h3%20%7B%0Afont%2Dsize%3A%2016px%3B%0A%7D%0Abody%20h4%20%7B%0Afont%2Dsize%3A%2014px%3B%0A%7D%0Abody%20h5%20%7B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Abody%20h6%20%7B%0Afont%2Dsize%3A%2011px%3B%0A%7D%0Abody%20blockquote%20%7B%0Amargin%3A%200%3B%0A%7D%0Abody%20ul%2C%0Abody%20ol%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Abody%20ol%20ol%2C%0Abody%20ul%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0Abody%20ul%20ul%20ol%2C%0Abody%20ul%20ol%20ol%2C%0Abody%20ol%20ul%20ol%2C%0Abody%20ol%20ol%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0Abody%20dd%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Abody%20code%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Abody%20pre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%3A%2012px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0A%7D%0Abody%20%2Eselect%3A%3A%2Dms%2Dexpand%20%7B%0Aopacity%3A%200%3B%0A%7D%0Abody%20%2Eocticon%20%7B%0Afont%3A%20normal%20normal%20normal%2016px%2F1%20octicons%2Dlink%3B%0Adisplay%3A%20inline%2Dblock%3B%0Atext%2Ddecoration%3A%20none%3B%0Atext%2Drendering%3A%20auto%3B%0A%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0A%2Dmoz%2Dosx%2Dfont%2Dsmoothing%3A%20grayscale%3B%0A%2Dwebkit%2Duser%2Dselect%3A%20none%3B%0A%2Dmoz%2Duser%2Dselect%3A%20none%3B%0A%2Dms%2Duser%2Dselect%3A%20none%3B%0Auser%2Dselect%3A%20none%3B%0A%7D%0Abody%20%2Eocticon%2Dlink%3Abefore%20%7B%0Acontent%3A%20%27%5Cf05c%27%3B%0A%7D%0Abody%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Abody%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Abody%3E%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0Abody%3E%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%0A%7D%0Abody%20a%3Anot%28%5Bhref%5D%29%20%7B%0Acolor%3A%20inherit%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Abody%20%2Eanchor%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%2Dright%3A%202px%3B%0Amargin%2Dleft%3A%20%2D18px%3B%0A%7D%0Abody%20%2Eanchor%3Afocus%20%7B%0Aoutline%3A%20none%3B%0A%7D%0Abody%20h1%2C%0Abody%20h2%2C%0Abody%20h3%2C%0Abody%20h4%2C%0Abody%20h5%2C%0Abody%20h6%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%2016px%3B%0Afont%2Dweight%3A%20bold%3B%0Aline%2Dheight%3A%201%2E4%3B%0A%7D%0Abody%20h1%20%2Eocticon%2Dlink%2C%0Abody%20h2%20%2Eocticon%2Dlink%2C%0Abody%20h3%20%2Eocticon%2Dlink%2C%0Abody%20h4%20%2Eocticon%2Dlink%2C%0Abody%20h5%20%2Eocticon%2Dlink%2C%0Abody%20h6%20%2Eocticon%2Dlink%20%7B%0Acolor%3A%20%23000%3B%0Avertical%2Dalign%3A%20middle%3B%0Avisibility%3A%20hidden%3B%0A%7D%0Abody%20h1%3Ahover%20%2Eanchor%2C%0Abody%20h2%3Ahover%20%2Eanchor%2C%0Abody%20h3%3Ahover%20%2Eanchor%2C%0Abody%20h4%3Ahover%20%2Eanchor%2C%0Abody%20h5%3Ahover%20%2Eanchor%2C%0Abody%20h6%3Ahover%20%2Eanchor%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Abody%20h1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Abody%20h2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Abody%20h3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Abody%20h4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Abody%20h5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Abody%20h6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%20%7B%0Avisibility%3A%20visible%3B%0A%7D%0Abody%20h1%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%201%2E75em%3B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Abody%20h1%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Abody%20h2%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%201%2E5em%3B%0Aline%2Dheight%3A%201%2E225%3B%0A%7D%0Abody%20h2%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Abody%20h3%20%7B%0Afont%2Dsize%3A%201%2E25em%3B%0Aline%2Dheight%3A%201%2E43%3B%0A%7D%0Abody%20h3%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Abody%20h4%20%7B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Abody%20h4%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Abody%20h5%20%7B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Abody%20h5%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Abody%20h6%20%7B%0Afont%2Dsize%3A%201em%3B%0Acolor%3A%20%23777%3B%0A%7D%0Abody%20h6%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Abody%20p%2C%0Abody%20blockquote%2C%0Abody%20ul%2C%0Abody%20ol%2C%0Abody%20dl%2C%0Abody%20table%2C%0Abody%20pre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Abody%20hr%20%7B%0Aheight%3A%204px%3B%0Apadding%3A%200%3B%0Amargin%3A%2016px%200%3B%0Abackground%2Dcolor%3A%20%23e7e7e7%3B%0Aborder%3A%200%20none%3B%0A%7D%0Abody%20ul%2C%0Abody%20ol%20%7B%0Apadding%2Dleft%3A%202em%3B%0A%7D%0Abody%20ul%20ul%2C%0Abody%20ul%20ol%2C%0Abody%20ol%20ol%2C%0Abody%20ol%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Abody%20li%3Ep%20%7B%0Amargin%2Dtop%3A%2016px%3B%0A%7D%0Abody%20dl%20%7B%0Apadding%3A%200%3B%0A%7D%0Abody%20dl%20dt%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%2016px%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20italic%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20dl%20dd%20%7B%0Apadding%3A%200%2016px%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Abody%20blockquote%20%7B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777%3B%0Aborder%2Dleft%3A%204px%20solid%20%23ddd%3B%0A%7D%0Abody%20blockquote%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Abody%20blockquote%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Abody%20table%20%7B%0Adisplay%3A%20block%3B%0Awidth%3A%20100%25%3B%0Aoverflow%3A%20auto%3B%0Aword%2Dbreak%3A%20normal%3B%0Aword%2Dbreak%3A%20keep%2Dall%3B%0A%7D%0Abody%20table%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20table%20th%2C%0Abody%20table%20td%20%7B%0Apadding%3A%206px%2013px%3B%0Aborder%3A%201px%20solid%20%23ddd%3B%0A%7D%0Abody%20table%20tr%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Aborder%2Dtop%3A%201px%20solid%20%23ccc%3B%0A%7D%0Abody%20table%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0A%7D%0Abody%20img%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Abackground%2Dcolor%3A%20%23fff%3B%0A%7D%0Abody%20code%20%7B%0Apadding%3A%200%3B%0Apadding%2Dtop%3A%200%3B%0Apadding%2Dbottom%3A%200%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%2085%25%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%2E04%29%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0Abody%20code%3Abefore%2C%0Abody%20code%3Aafter%20%7B%0Aletter%2Dspacing%3A%20%2D0%2E2em%3B%0Acontent%3A%20%22%5C00a0%22%3B%0A%7D%0Abody%20pre%3Ecode%20%7B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%20100%25%3B%0Aword%2Dbreak%3A%20normal%3B%0Awhite%2Dspace%3A%20pre%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0Abody%20%2Ehighlight%20%7B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Abody%20%2Ehighlight%20pre%2C%0Abody%20pre%20%7B%0Apadding%3A%2016px%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dsize%3A%2085%25%3B%0Aline%2Dheight%3A%201%2E45%3B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0Abody%20%2Ehighlight%20pre%20%7B%0Amargin%2Dbottom%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0A%7D%0Abody%20pre%20%7B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0Abody%20pre%20code%20%7B%0Adisplay%3A%20inline%3B%0Amax%2Dwidth%3A%20initial%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20initial%3B%0Aline%2Dheight%3A%20inherit%3B%0Aword%2Dwrap%3A%20normal%3B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0Abody%20pre%20code%3Abefore%2C%0Abody%20pre%20code%3Aafter%20%7B%0Acontent%3A%20normal%3B%0A%7D%0Abody%20kbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%2Dsize%3A%2011px%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0Abody%20%2Epl%2Dc%20%7B%0Acolor%3A%20%23969896%3B%0A%7D%0Abody%20%2Epl%2Dc1%2C%0Abody%20%2Epl%2Ds%20%2Epl%2Dv%20%7B%0Acolor%3A%20%230086b3%3B%0A%7D%0Abody%20%2Epl%2De%2C%0Abody%20%2Epl%2Den%20%7B%0Acolor%3A%20%23795da3%3B%0A%7D%0Abody%20%2Epl%2Ds%20%2Epl%2Ds1%2C%0Abody%20%2Epl%2Dsmi%20%7B%0Acolor%3A%20%23333%3B%0A%7D%0Abody%20%2Epl%2Dent%20%7B%0Acolor%3A%20%2363a35c%3B%0A%7D%0Abody%20%2Epl%2Dk%20%7B%0Acolor%3A%20%23a71d5d%3B%0A%7D%0Abody%20%2Epl%2Dpds%2C%0Abody%20%2Epl%2Ds%2C%0Abody%20%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%0Abody%20%2Epl%2Dsr%2C%0Abody%20%2Epl%2Dsr%20%2Epl%2Dcce%2C%0Abody%20%2Epl%2Dsr%20%2Epl%2Dsra%2C%0Abody%20%2Epl%2Dsr%20%2Epl%2Dsre%20%7B%0Acolor%3A%20%23183691%3B%0A%7D%0Abody%20%2Epl%2Dv%20%7B%0Acolor%3A%20%23ed6a43%3B%0A%7D%0Abody%20%2Epl%2Did%20%7B%0Acolor%3A%20%23b52a1d%3B%0A%7D%0Abody%20%2Epl%2Dii%20%7B%0Abackground%2Dcolor%3A%20%23b52a1d%3B%0Acolor%3A%20%23f8f8f8%3B%0A%7D%0Abody%20%2Epl%2Dsr%20%2Epl%2Dcce%20%7B%0Acolor%3A%20%2363a35c%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20%2Epl%2Dml%20%7B%0Acolor%3A%20%23693a17%3B%0A%7D%0Abody%20%2Epl%2Dmh%2C%0Abody%20%2Epl%2Dmh%20%2Epl%2Den%2C%0Abody%20%2Epl%2Dms%20%7B%0Acolor%3A%20%231d3e81%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20%2Epl%2Dmq%20%7B%0Acolor%3A%20%23008080%3B%0A%7D%0Abody%20%2Epl%2Dmi%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0Abody%20%2Epl%2Dmb%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20%2Epl%2Dmd%20%7B%0Abackground%2Dcolor%3A%20%23ffecec%3B%0Acolor%3A%20%23bd2c00%3B%0A%7D%0Abody%20%2Epl%2Dmi1%20%7B%0Abackground%2Dcolor%3A%20%23eaffea%3B%0Acolor%3A%20%2355a532%3B%0A%7D%0Abody%20%2Epl%2Dmdr%20%7B%0Acolor%3A%20%23795da3%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Abody%20%2Epl%2Dmo%20%7B%0Acolor%3A%20%231d3e81%3B%0A%7D%0Abody%20kbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%3A%2011px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0Abody%20%2Etask%2Dlist%2Ditem%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0Abody%20%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%20%7B%0Amargin%2Dtop%3A%203px%3B%0A%7D%0Abody%20%2Etask%2Dlist%2Ditem%20input%20%7B%0Amargin%3A%200%200%2E35em%200%2E25em%20%2D1%2E6em%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0Abody%20%3Achecked%2B%2Eradio%2Dlabel%20%7B%0Az%2Dindex%3A%201%3B%0Aposition%3A%20relative%3B%0Aborder%2Dcolor%3A%20%234078c0%3B%0A%7D%0A" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="project-001----writing-a-lexical-analysis-engine">Project 001 -- Writing a Lexical Analysis Engine</h1>
+<p>By Tim Henderson (tadh@google.com)</p>
+<h1 id="what">What?</h1>
+<p>In this project you will be writing the core of a lexical analysis engine. Specifically you will implement the &quot;ThompsonVM&quot; algorithm adapted for the lexical analysis problem. (see <a href="https://swtch.com/~rsc/regexp/regexp2.html">Russ Cox's Article</a> as well as the posted slides)</p>
+<h2 id="lexical-analysis-requirements">Lexical Analysis Requirements</h2>
+<p>The requirements for a lexical analysis engine are:</p>
+<ol type="1">
+<li>It must match prefixes of the input</li>
+<li>It must match multiple patterns at once</li>
+<li>It must pick the pattern which matches the longest prefix</li>
+<li>It must break ties by picking the pattern which appears earliest in the user supplied list of patterns. Ie. break ties by user priority.</li>
+</ol>
+<p>As a reminder the adaptions needed to a standard regular expression engine for lexical analysis are:</p>
+<ol type="1">
+<li>Keep going until no new states are generated.</li>
+<li>Track the matches found.</li>
+<li>Return the highest priority match for those matches of the longest prefix.</li>
+<li>After state exhaustion, reset the automaton and find the next match.</li>
+<li>After all input consumed ensure it was all matched. Otherwise return a failure.</li>
+</ol>
+<h2 id="your-task">Your Task</h2>
+<p>Your task will be to take input and a precompiled NFA program and then emit the tokens. Here is an example:</p>
+<p>The NFA Program. Each MATCH instruction represents a pattern. This program matches three patterns: <code>&quot;a&quot;</code>, <code>&quot;a+&quot;</code>, and <code>&quot;( |\t|\n)+&quot;</code>. (notes on the format of the NFA programs are below).</p>
+<pre><code>0 SPLIT 1 3
+1 CHAR 97 97
+2 MATCH
+3 SPLIT 4 9
+4 CHAR 97 97
+5 SPLIT 6 8
+6 CHAR 97 97
+7 JMP 5
+8 MATCH
+9 SPLIT 10 12
+10 CHAR 32 32
+11 JMP 16
+12 SPLIT 13 15
+13 CHAR 9 9
+14 JMP 16
+15 CHAR 10 10
+16 SPLIT 17 25
+17 SPLIT 18 20
+18 CHAR 32 32
+19 JMP 24
+20 SPLIT 21 23
+21 CHAR 9 9
+22 JMP 24
+23 CHAR 10 10
+24 JMP 16
+25 MATCH</code></pre>
+<p>The input</p>
+<pre><code>'a aa a aaaa a aaaa a'</code></pre>
+<p>To invoke your program, which in this example is <code>pr01</code>, the following command will be run:</p>
+<pre><code>cat input.txt | ./pr01 nfa-program.ns</code></pre>
+<p>Your program will output the instruction index of the MATCH <code>:</code> <code>&quot;lexeme&quot;</code> to the <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)">STANDARD OUT</a>.</p>
+<pre><code>2:&quot;a&quot;
+25:&quot; &quot;
+8:&quot;aa&quot;
+25:&quot; &quot;
+2:&quot;a&quot;
+25:&quot; &quot;
+8:&quot;aaaa&quot;
+25:&quot; &quot;
+2:&quot;a&quot;
+25:&quot; &quot;
+8:&quot;aaaa&quot;
+25:&quot; &quot;
+2:&quot;a&quot;</code></pre>
+<h2 id="example-inputs-outputs-implementation-and-student-grader">Example inputs, outputs, implementation, and &quot;student-grader&quot;</h2>
+<p>To aid you in your quest to complete this programming project an example implementation of the assignment has been provided in compiled, binary form. Find it in <code>pr01/bin/pr01</code>.</p>
+<p>To generate new NFA programs from a list of regular expressions (for testing) you can use <code>pr01/bin/lexc</code> which takes a list of regexs and produces an NFA program.</p>
+<p>Your program should be able to process all of the test cases in the examples directory (<code>pr01/examples</code>). Each example <code>N</code> has:</p>
+<ol type="1">
+<li>An input <code>N-ex-input.txt</code></li>
+<li>A NFA program <code>N-ex-program.ns</code></li>
+<li>A <code>sh</code> command for running the example <code>N-ex-cmd.sh</code></li>
+<li>Output <code>N-ex-output.txt</code></li>
+<li>(Optionally) and error file <code>N-ex-error.txt</code>. The error will only exist of the example is a <em>negative</em> example meant to cause the lexical analyzer to fail in some way.</li>
+</ol>
+<p>Finally, a program <code>bin/student-grader</code> has been provided. This program will automatically run your program against a set of test cases and produce a report on how many you passed. To run this program</p>
+<pre><code>$ ./bin/student-grader &lt;PATH_TO_YOUR_EXECUTABLE&gt;</code></pre>
+<h2 id="nfa-program-format">NFA Program Format</h2>
+<p>Correct NFA Programs will all be in the following format. It is possible that <em>incorrectly</em> formatted programs will be fed to your program. Please use defensive program practices to detect these errors and print a helpful message to the user. A stack trace, core dump, or seg fault is not a helpful message.</p>
+<p>Each line will have the following components:</p>
+<pre><code>INSTRUCTION-INDEX OP-CODE [OPERAND-A [OPERAND-B]]</code></pre>
+<p>For example</p>
+<pre><code>0 SPLIT 1 3</code></pre>
+<p>The fields will always be delimited by a space <code>&quot; &quot;</code>. The lines will always be delimited using unix line endings: <code>&quot;\n&quot;</code>.</p>
+<h3 id="the-op-codes">The Op Codes</h3>
+<ol type="1">
+<li><p><code>CHAR</code> takes two operands: the start of the character range, the end of the character range (inclusive). The operands are given as the ascii decimal encoding of the character.</p>
+<p>ex. <code>1 CHAR 97 97</code> Matches <code>a</code></p>
+<p>ex. <code>1 CHAR 97 98</code> Matches <code>a</code> or <code>b</code></p>
+<p>In this way, the CHAR operand could really be called CHARRANGE. But, CHAR is shorter and having a single operand CHAR operator is redundant.</p></li>
+<li><p><code>JMP</code> takes one operand: the instruction index of the jump target.</p>
+<pre><code>7 JMP 5</code></pre></li>
+<li><p><code>SPLIT</code> takes two operands: the instruction indices of the jump targets.</p>
+<pre><code>5 SPLIT 6 8</code></pre></li>
+<li><p><code>MATCH</code> takes no operands.</p></li>
+</ol>
+<h2 id="requirements-for-the-command-line-interface-of-your-program">Requirements for the Command Line Interface of your program</h2>
+<p>Your program must read the input to tokenize on the STANDARD IN. It must output its output to the STANDARD OUT (in the appropriate format described above). It must take one command line argument, a path to the file containing the NFA program.</p>
+<p>In general, you should be able to substitute your program's name in to the example <code>N-ex-cmd.sh</code> scripts and have them continue to function.</p>
+<h3 id="your-program-must-use-the-appropriate-exit-code">Your program must use the appropriate exit code</h3>
+<p>When your program exits it should use the appropriate exit code. If the program succeeds (tokenize all of the input properly) it <em>should exit with status <code>0</code></em>.</p>
+<p>If your program fails (does not tokenize all the input properly) it <em>should exit with status 1 or more</em>.</p>
+<p>This is important so that our automatic testing harness can verify your programs behavior.</p>
+<h4 id="exiting-from-python">Exiting from python</h4>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python2</span>
+
+<span class="im">import</span> sys
+
+<span class="co"># main should return the integer status code</span>
+<span class="kw">def</span> main(args):
+    <span class="cf">if</span> <span class="bu">len</span>(args) <span class="op">&lt;=</span> <span class="dv">0</span>:
+        <span class="bu">print</span> <span class="op">&gt;&gt;</span>sys.stderr, <span class="st">&quot;expected an argument got none&quot;</span>
+        <span class="cf">return</span> <span class="dv">1</span>
+    <span class="bu">print</span> <span class="st">&quot;my args are: &quot;</span>, args
+    <span class="cf">return</span> <span class="dv">0</span>
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:
+    <span class="co"># sys.exit sets the proper status code</span>
+    sys.exit(main(sys.argv[<span class="dv">1</span>:]))</code></pre></div>
+<h4 id="exiting-from-java">Exiting from java</h4>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> techx.sopl.pr01;</span>
+
+<span class="kw">import</span><span class="im"> java.util.Arrays;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> LexCore {
+
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+        <span class="kw">if</span> (args.<span class="fu">length</span> &lt;= <span class="dv">0</span>) {
+            <span class="bu">System</span>.<span class="fu">err</span>.<span class="fu">println</span>(<span class="st">&quot;expected an argument got none&quot;</span>);
+            <span class="co">// System.exit sets the status code to &gt; 0 to indicate failure</span>
+            <span class="bu">System</span>.<span class="fu">exit</span>(<span class="dv">1</span>);
+        }
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(
+          <span class="bu">String</span><span class="fu">.format</span>(
+            <span class="st">&quot;my args are: </span><span class="sc">%s</span><span class="st">&quot;</span>,
+            <span class="bu">String</span>.<span class="fu">join</span>(<span class="st">&quot; &quot;</span>, <span class="bu">Arrays</span>.<span class="fu">asList</span>(args)));
+        <span class="co">// System.exit sets the status code to 0 to indicate success</span>
+        <span class="bu">System</span>.<span class="fu">exit</span>(<span class="dv">0</span>);
+    }
+
+}</code></pre></div>
+<h4 id="exiting-from-go">Exiting from go</h4>
+<div class="sourceCode"><pre class="sourceCode go"><code class="sourceCode go"><span class="kw">package</span> main
+
+<span class="kw">import</span> (
+    <span class="st">&quot;os&quot;</span>
+    <span class="st">&quot;fmt&quot;</span>
+)
+
+<span class="co">// run runs the program it returns the proper exit code and consumes the</span>
+<span class="co">// commandline arguments</span>
+<span class="kw">func</span> run(args []<span class="dt">string</span>) <span class="dt">int</span> {
+    <span class="kw">if</span> <span class="bu">len</span>(args) &lt;= <span class="dv">0</span> {
+        fmt.Fprintln(os.Stderr, <span class="st">&quot;expected an argument got none&quot;</span>)
+        <span class="kw">return</span> <span class="dv">1</span>
+    }
+    fmt.Printf(<span class="st">&quot;my args are: %v&quot;</span>, strings.Join(args, <span class="st">&quot; &quot;</span>))
+    <span class="kw">return</span> <span class="dv">0</span>
+}
+
+<span class="co">// main is the entry point for the program</span>
+<span class="kw">func</span> main() {
+    os.Exit(os.Args[<span class="dv">1</span>:])
+}</code></pre></div>
+<h2 id="what-you-will-turn-in">What you will turn in</h2>
+<ol type="1">
+<li><p>The source code for your implementation of NFA simulation via the &quot;virtual machine&quot; method. Also, any ancillary code needed (parsing code for NFA programs).</p></li>
+<li><p>A README file that explains</p>
+<ul>
+<li>How to compile your program</li>
+<li>How run any associated tests you have written</li>
+<li>How to run your program</li>
+<li>Where the code is, and how to read it.</li>
+</ul></li>
+<li><p>A <code>pr01</code> &quot;command&quot; which must conform the command line interface described above and demonstrated in the examples.</p>
+<ul>
+<li>C/C++/Go/Rust/D simply name your binary <code>pr01</code></li>
+<li>Java, write a simple &quot;shell script&quot; wrapper that invokes the <code>java</code> command and passes any arguments to your program. (example below)</li>
+<li>Python, write a top level <code>pr01</code> script, make it executable that implements the required interface. DO NOT PUT YOUR ENTIRE PROGRAM IN THIS SCRIPT -- it should just be an entry point.</li>
+<li>etc...</li>
+</ul></li>
+<li><p>(Optional) Unit Tests. (10% extra credit)</p></li>
+<li><p>(Optional) Use a build system. (10% extra credit)</p>
+<ul>
+<li>For Java: gradle</li>
+<li>For C/C++: make</li>
+<li>For Python: virtualenv + pip</li>
+<li>For Go: congrats! It is part of the language build your code with the <code>go build</code> command.</li>
+<li>For Rust: use cargo. Don't invoke rustc directly.</li>
+<li>etc...</li>
+</ul>
+<p>Note: Using <em>only</em> Make for things other than C/C++ is not encouraged. However, it is fine to use it as part of your build setup. Just explain what you did in the README.</p>
+<p>Ideally, I should be able to <code>cd</code> into your project directory, run 1 command, and have a <code>pr01</code> &quot;program&quot; (it can be a shell script wrapper) that implements the required interface.</p></li>
+</ol>
+<h3 id="example-skeleton-programs">Example Skeleton Programs</h3>
+<p>I have provided two skeletons that you may use to get started. There is one for python and one for java. See the associated readme files for either. I do not have the bandwidth to provide skeletons for other languages, sorry.</p>
+<h3 id="example-shell-script-wrappers">Example Shell Script Wrappers</h3>
+<h4 id="java">Java</h4>
+<p>For Java, the easiest way to do this is to use gradle. I will also show you a manual way to accomplish this. Let's do the gradle setup first. Go to <a href="https://gradle.org" class="uri">https://gradle.org</a> and install gradle. (Already done on codio your welcome. This example uses gradle 5.1.1: codio may have a different version, that's ok.)</p>
+<p>Now do this:</p>
+<pre><code>$ gradle init --type java-application
+
+Select build script DSL:
+  1: groovy
+  2: kotlin
+Enter selection (default: groovy) [1..2] 1
+
+Select test framework:
+  1: junit
+  2: testng
+  3: spock
+Enter selection (default: junit) [1..3] 1
+
+Project name (default: java): pr01
+Source package (default: pr01): techx.sopl.pr01</code></pre>
+<p>Now you are setup to complete this assignment the EASY way.</p>
+<p>Compile your program</p>
+<pre><code>$ ./gradlew classes</code></pre>
+<p>Test your program</p>
+<pre><code>$ ./gradlew test</code></pre>
+<p>hmm... The console output seems kinda, sparse. Here is the fix: <a href="https://stackoverflow.com/a/46533151" class="uri">https://stackoverflow.com/a/46533151</a>. Edit your build.gradle and add the following line to the <code>plugins</code> section:</p>
+<pre><code>// test logger
+id &quot;com.adarshr.test-logger&quot; version &quot;1.6.0&quot;</code></pre>
+<p>Now force rerun</p>
+<pre><code> $ rm -rf build
+ $ ./gradlew test
+
+ &gt; Task :test
+
+ techx.sopl.pr01.AppTest
+
+   Test testAppHasAGreeting PASSED
+
+ SUCCESS: Executed 1 tests in 632ms
+
+
+ BUILD SUCCESSFUL in 1s
+ 3 actionable tasks: 3 executed</code></pre>
+<p>That is better.</p>
+<p>Now let's build that shell script:</p>
+<pre><code>$ ./gradlew installDist</code></pre>
+<p>The script is located at <code>./build/install/pr01/bin/pr01</code></p>
+<p>Let's run it:</p>
+<pre><code>$ ./build/install/pr01/bin/pr01
+Hello world.</code></pre>
+<p>Huzzah!</p>
+<h4 id="java-the-hard-way">Java The Hard Way</h4>
+<p>To get a java program to run you need two things</p>
+<ol type="1">
+<li>A java runtime, the <code>java</code> command.</li>
+<li>A &quot;classpath&quot; that says where to get all your classes.</li>
+</ol>
+<p>Gradle nicely puts that classpath together for you in a reliable way that lets you use third party libraries easily. Now you are doing this part by yourself. You will need to write script that looks kinda like this:</p>
+<pre><code>#!/usr/bin/env bash
+
+java -classpath /absolute/path/to/your/classes:any/other/jars techx.sopl.pr01.MainClass</code></pre>
+<p>good luck!</p>
+<h3 id="python">Python</h3>
+<p>For python this is pretty easy. You will want to setup things in the following way.</p>
+<ol type="1">
+<li>Create a <code>activate.sh</code> script that sets the PYTHONPATH</li>
+<li>Add a <code>bin</code> folder that contains your &quot;executable&quot; command</li>
+<li>Add your implementation to the dir pointed at by the PYTHONPATH</li>
+</ol>
+<h4 id="setup">Setup</h4>
+<p>(Assumes you are using virtualenv)</p>
+<pre><code>$ mkdir pr01
+$ cd pr01
+$ virtualenv --no-site-packages env
+$ cat &gt;activate.sh &lt;&lt;EOF
+source env/bin/activate
+export PATH=\$(pwd)/bin:\$PATH
+export PYTHONPATH=\$(pwd)/src:\$PYTHONPATH
+EOF
+$ mkdir bin
+$ mkdir src</code></pre>
+<h4 id="activate-your-setup">Activate your setup</h4>
+<p>You have now made your setup to use it source the activate scripte</p>
+<pre><code>$ source activate.sh</code></pre>
+<p>You should do this every time you want to work on your program. It sets the appropriate environment variables. You only need to do this one time per shell.</p>
+<h4 id="example">Example</h4>
+<pre><code>$ source activate.sh
+(env) $</code></pre>
+<p>The <code>(env)</code> lets you know you activated your environment.</p>
+<h4 id="directory-structure">Directory structure</h4>
+<pre><code>$ tree -I env --charset ANSI
+.
+|-- activate.sh
+|-- bin
+`-- src</code></pre>
+<p>You should put your python code in the src directory.</p>
+<h4 id="final-example-with-script">Final example with script</h4>
+<p>Layout</p>
+<pre><code>$ tree -I env --charset ANSI
+.
+|-- activate.sh
+|-- bin
+|   `-- pr01
+`-- src
+    `-- hello.py</code></pre>
+<p>Contents of <code>bin/pr01</code></p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">$ cat <span class="bu">bin</span><span class="op">/</span>pr01
+<span class="co">#!/usr/bin/env python</span>
+
+<span class="im">import</span> sys
+
+<span class="im">import</span> hello
+
+<span class="kw">def</span> main(args):
+    <span class="bu">print</span> hello.greeting()
+    <span class="cf">return</span> <span class="dv">0</span>
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:
+    sys.exit(main(sys.argv[<span class="dv">1</span>:]))</code></pre></div>
+<p>Make sure you make <code>bin/pr01</code> executable</p>
+<pre><code>$ chmod +x bin/pr01</code></pre>
+<p>Contents of <code>src/hello.py</code></p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">$ cat src<span class="op">/</span>hello.py
+<span class="co">#!/usr/bin/env python2</span>
+
+<span class="kw">def</span> greeting():
+    <span class="cf">return</span> <span class="st">&quot;hello world&quot;</span></code></pre></div>
+</body>
+</html>
